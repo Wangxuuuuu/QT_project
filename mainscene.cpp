@@ -2,7 +2,7 @@
 #include "ui_mainscene.h"
 #include "config.h"
 #include "bullet.h"
-
+#include "enemyplane.h"
 #include <QIcon>
 #include <QPainter>
 MainScene::MainScene(QWidget *parent)
@@ -10,6 +10,7 @@ MainScene::MainScene(QWidget *parent)
     , ui(new Ui::MainScene)
 {
     ui->setupUi(this);
+
     //在构造函数中调用初始化场景函数
     initialScene();
     //在构造函数中调用Playgame函数
@@ -22,12 +23,15 @@ void MainScene::initialScene(){
     setWindowTitle(Game_title);
     //设置图标
     setWindowIcon(QIcon(":/resources/bingbing12.jpg"));
-
+    //敌机出场时间间隔初始化
+    enemy_recorder = 0;
 
 }
 void MainScene::Playgame(){
     timer1->start(Game_interval);
     connect(timer1,&QTimer::timeout,[=](){
+        //敌机出场
+        EnemyToScene();
        //更新图片位置坐标
         updateposition();
        //重新绘制图片
@@ -46,6 +50,13 @@ void MainScene::updateposition(){
             hero.bullets[i].updatePosition();
         }
     }
+    //更新敌机位置
+    for(int i=0;i<ENEMY_NUM;i++){
+        //如果敌机状态为false，更新敌机位置
+        if(!enemys[i].enemy_free){
+            enemys[i].updatePosition();
+        }
+    }
 
 }
 void MainScene::paintEvent(QPaintEvent *){
@@ -59,6 +70,12 @@ void MainScene::paintEvent(QPaintEvent *){
    for(int i =0;i<BULLET_NUM;i++){
        if(!hero.bullets[i].bullet_free){
            painter.drawPixmap(hero.bullets[i].bullet_x,hero.bullets[i].bullet_y,hero.bullets[i].bullet_icon);
+       }
+   }
+   //绘制敌机图标
+   for(int i=0;i<ENEMY_NUM;i++){
+       if(!enemys[i].enemy_free){
+           painter.drawPixmap(enemys[i].enemy_X,enemys[i].enemy_Y,enemys[i].enemy_icon);
        }
    }
 
@@ -81,7 +98,24 @@ void MainScene::mouseMoveEvent(QMouseEvent *event){
     }
     hero.setPosition(x,y);
 }
-
+void MainScene::EnemyToScene(){
+    enemy_recorder++;
+    if(enemy_recorder<=ENEMY_INTERVAL){
+        return;
+    }
+    //达到时间后重置
+    enemy_recorder = 0;
+    for(int i=0;i<ENEMY_NUM;i++){
+        if(enemys[i].enemy_free){
+            //出场后设为false
+            enemys[i].enemy_free = false;
+            //设置坐标
+            enemys[i].enemy_X = rand() % (Game_width - enemys[i].enemy_icon.width());//创造随机数
+            enemys[i].enemy_Y =0;     //这里的设置有待考虑，先暂留
+            break;
+        }
+    }
+}
 
 
 MainScene::~MainScene()
