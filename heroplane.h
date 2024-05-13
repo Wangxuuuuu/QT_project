@@ -20,6 +20,8 @@ public:
     int plane_Y;
     //飞机矩形边框
     QRect plane_rect;
+    //飞机状态
+    bool plane_free;
     //弹匣
     Bullet bullets[BULLET_NUM];
     //发射间隔记录

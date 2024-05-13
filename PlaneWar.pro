@@ -6,6 +6,7 @@ CONFIG += c++11
 CONFIG += resources_big
 
 
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -19,22 +20,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bullet.cpp \
+    endwidget.cpp \
     enemyplane.cpp \
     heroplane.cpp \
+    introduce.cpp \
     main.cpp \
     mainscene.cpp \
-    map.cpp
+    map.cpp \
+    startwidget.cpp
 
 HEADERS += \
     bullet.h \
     config.h \
+    endwidget.h \
     enemyplane.h \
     heroplane.h \
+    introduce.h \
     mainscene.h \
-    map.h
+    map.h \
+    startwidget.h
 
 FORMS += \
-    mainscene.ui
+    endwidget.ui \
+    introduce.ui \
+    mainscene.ui \
+    startwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

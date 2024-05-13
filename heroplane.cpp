@@ -8,6 +8,8 @@ HeroPlane::HeroPlane()
   //初始化飞机的坐标位置(这里指的是图标左上角的坐标位置)
   plane_X = Game_width*0.5 - plane_icon.width()*0.5;
   plane_Y = Game_height - plane_icon.height();
+  //初始化状态
+  plane_free = false;
   //初始化飞机的矩形边框
   plane_rect.setWidth(plane_icon.width());
   plane_rect.setHeight(plane_icon.height());
@@ -31,8 +33,8 @@ void HeroPlane::shoot(){
             //发射后将状态改为false
             bullets[i].bullet_free = false;
             //设置发射时的子弹坐标位置
-            bullets[i].bullet_x = plane_X + plane_rect.width()*0.5 - 35;
-            bullets[i].bullet_y = plane_Y - 70;//注意这里之所以减去10和25，是因为原来的位置坐标处在飞机hero.icon的内部，并不位于飞机的头部发射位置，所以要调整
+            bullets[i].bullet_x = plane_X + plane_rect.width()*0.5 - 5;
+            bullets[i].bullet_y = plane_Y - 10;//注意这里之所以减去10和25，是因为原来的位置坐标处在飞机hero.icon的内部，并不位于飞机的头部发射位置，所以要调整
             break;
         }
     }

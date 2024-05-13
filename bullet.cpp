@@ -24,6 +24,9 @@ void Bullet::updatePosition(){
     }
     //子弹向上移动
     bullet_y -=bullet_speed;
+
+    bullet_rect.moveTo(bullet_x,bullet_y);//这一步千万不要忘了！！！！！！！！！（不然就会发生“绘画跟着移动但是子弹Rect的判定坐标位置没有跟着移动”的大BUG!!!）
+
     if(bullet_y<=-bullet_rect.height()){
         bullet_free = true;
 

@@ -8,12 +8,16 @@
 #include <heroplane.h>
 #include <bullet.h>
 #include <enemyplane.h>
+#include <startwidget.h>
+#include <endwidget.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainScene; }
 QT_END_NAMESPACE
 
 class MainScene : public QWidget
 {
+public:
     Q_OBJECT
 
     //初始化游戏场景
@@ -30,8 +34,13 @@ class MainScene : public QWidget
     void mouseMoveEvent(QMouseEvent *event);
     //添加敌机出场的成员函数
     void EnemyToScene();
+    //添加碰撞检测函数
+    void collisiondetection();
 
 
+
+
+public:
     //地图对象
     Map map;
     //飞机对象
@@ -40,6 +49,11 @@ class MainScene : public QWidget
     EnemyPlane enemys[ENEMY_NUM];
     //敌机出场间隔记录
     int enemy_recorder;
+    //登录界面对象
+    StartWidget * startwidget;
+    //结束界面对象
+    EndWidget * endwidget;
+
 
 
 
