@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <RCC>
     <qresource prefix="/">
         <file>resources/background.jpg</file>
@@ -12,3 +13,19 @@
         <file>resources/hero.jpg</file>
     </qresource>
 </RCC>
+=======
+<RCC>
+    <qresource prefix="/">
+        <file>resources/background.jpg</file>
+        <file>resources/bingbing4.jpg</file>
+        <file>resources/bingbing5.jpg</file>
+        <file>resources/bingbing6.jpg</file>
+        <file>resources/bingbing7.jpg</file>
+        <file>resources/bingbing8.png</file>
+        <file>resources/bingbing12.jpg</file>
+        <file>resources/bullet.jpg</file>
+        <file>resources/enemy.jpg</file>
+        <file>resources/hero.jpg</file>
+    </qresource>
+</RCC>
+>>>>>>> 5be61a101e46b25d788dc8f017f9d2d89c294fb1
