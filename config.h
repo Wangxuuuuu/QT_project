@@ -4,18 +4,18 @@
 
 #define Game_width 512
 #define Game_height 768
-#define Game_title "飞机大战"
-#define MAP_PATH ":/resources/bingbing7.jpg"
+#define Game_title "飞机大战（萌新版）"
+#define MAP_PATH ":/resources/background.jpg"
 #define MAP_SCROLL_SPEED 2
 #define Game_interval 10
-#define PLANE_ICON ":/resources/plane.png"
-#define BULLET_PATH ":/resources/bullet.png"
-#define BULLET_SPEED 5
+#define PLANE_ICON ":/resources/hero.jpg"
+#define BULLET_PATH ":/resources/bullet.jpg"
+#define BULLET_SPEED 7//5
 #define BULLET_NUM 30
 #define BULLET_INTERVAL 20
-#define ENEMY_ICON ":/resources/enemy_plane.png"
-#define ENEMY_SPEED 5
-#define ENEMY_NUM 20
+#define ENEMY_ICON ":/resources/enemy.jpg"
+#define ENEMY_SPEED 3//5
+#define ENEMY_NUM 15//20
 #define ENEMY_INTERVAL 30
 
 
